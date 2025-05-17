@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
+
+.container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.health-check {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #555;
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.add-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+.note-list {
+  list-style: none;
+  padding: 0;
+}
+
+.note-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 8px 0;
+}
+
+.note-text {
+  flex: 1;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.note-text.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.edit-button {
+  color: #007bff;
+}
+
+.delete-button {
+  color: #e53935;
+}
