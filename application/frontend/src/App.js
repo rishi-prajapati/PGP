@@ -9,6 +9,12 @@ function App() {
   const [editingText, setEditingText] = useState("");
   const [healthStatus, setHealthStatus] = useState("Checking...");
 
+  const API_URL = window._env_ && window._env_.REACT_APP_API_URL 
+  ? window._env_.REACT_APP_API_URL 
+  : 'http://localhost:8080';
+
+  console.log("Using API URL:", API_URL);
+
   useEffect(() => {
     fetchNotes();
     checkHealth();
@@ -16,7 +22,7 @@ function App() {
 
   const fetchNotes = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/notes"); 
+      const response = await axios.get(`${API_URL}/notes`); 
       setNotes(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error("Error fetching notes:", error);
@@ -26,7 +32,7 @@ function App() {
 
   const checkHealth = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/health");
+      const response = await axios.get(`${API_URL}/health`);
       setHealthStatus(response.data?.status || "Healthy");
     } catch (error) {
       console.error("Health check failed:", error);
@@ -43,7 +49,7 @@ function App() {
     };
 
     try {
-      const response = await axios.post("http://localhost:8080/notes", newNote);
+      const response = await axios.post(`${API_URL}/notes`, newNote);
       setNotes([...notes, response.data]);
       setNoteText("");
     } catch (err) {
@@ -58,7 +64,7 @@ function App() {
     const updatedNote = { ...noteToUpdate, completed: !currentStatus };
 
     try {
-      await axios.put(`http://localhost:8080/notes/${id}`, updatedNote);
+      await axios.put(`${API_URL}/notes/${id}`, updatedNote);
       setNotes(notes.map((note) =>
         note.id === id ? { ...note, completed: !currentStatus } : note
       ));
@@ -69,7 +75,7 @@ function App() {
 
   const handleDeleteNote = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/notes/${id}`);
+      await axios.delete(`${API_URL}/notes/${id}`);
       setNotes(notes.filter((note) => note.id !== id));
     } catch (err) {
       console.error("Error deleting note:", err);
@@ -87,7 +93,7 @@ function App() {
     const updatedNote = { text: editingText };
 
     try {
-      await axios.put(`http://localhost:8080/notes/${id}`, updatedNote);
+      await axios.put(`${API_URL}/notes/${id}`, updatedNote);
       setNotes(notes.map((note) =>
         note.id === id ? { ...note, text: editingText } : note
       ));
