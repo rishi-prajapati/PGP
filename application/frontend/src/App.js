@@ -9,9 +9,8 @@ function App() {
   const [editingText, setEditingText] = useState("");
   const [healthStatus, setHealthStatus] = useState("Checking...");
 
-  const API_URL = window._env_ && window._env_.REACT_APP_API_URL 
-  ? window._env_.REACT_APP_API_URL 
-  : 'http://localhost:8080';
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+
 
   console.log("Using API URL:", API_URL);
 
