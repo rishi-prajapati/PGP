@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: prajapatirishi99/frontend:123a6c8bff8ec7e398c8610b0784c998922047c4
+        ports:
+        - containerPort: 80
+        env:
+        - name: REACT_APP_API_URL
+          value: https://todoback.utsabsapkota.xyz #to be changed
