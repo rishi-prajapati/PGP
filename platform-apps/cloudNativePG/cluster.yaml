@@ -1,0 +1,31 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: my-postgresql
+  namespace: postgres
+spec:
+  instances: 1
+  # CloudNativePG will automatically provision a Persistent Volume (PV) for this storage.
+  storage:
+    size: 1Gi
+  monitoring:
+    enablePodMonitor: false # If set to true, it would enable Prometheus monitoring for PostgreSQL metrics.
+  bootstrap:
+    initdb:
+      database: notesdb
+      owner: rishi
+      secret:
+        name: cnpg-creds
+      postInitApplicationSQL:
+        - |
+          CREATE TABLE IF NOT EXISTS notes (
+            id SERIAL PRIMARY KEY,
+            text TEXT NOT NULL,
+            completed BOOLEAN DEFAULT FALSE
+          );
+        - |
+          GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.notes TO rishi;
+        - |
+          GRANT ALL PRIVILEGES ON TABLE public.notes TO rishi;
+        - |
+          GRANT USAGE, SELECT, UPDATE ON SEQUENCE public.notes_id_seq TO rishi;
