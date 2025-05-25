@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: azure-secret-sp
+type: Opaque
+data:
+  ClientID: YzdkNzQwMWEtZmM2Zi00MmM1LTk5YzEtMzAzMTc1ZDViNDkxCg==
+  ClientSecret: UHN3OFF+bmd4Y1VPdHBNNFBaWkVwYmdYNlUwcjRyZnNvSHNoRWNpcQo=

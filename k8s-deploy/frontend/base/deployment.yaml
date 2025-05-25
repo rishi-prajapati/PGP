@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: prajapatirishi99/frontend:9286b11f4f0b19917332bbcdaabd8553c86db4a7
+        image: prajapatirishi99/frontend:2e2cde3abd4f7e35a44a2e75985d53e49694ae14
         ports:
         - containerPort: 80
         env:

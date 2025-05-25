@@ -3,6 +3,9 @@ kind: Kustomization
 
 resources:
   - ../../base
+  - vault-auth.yaml
+  - secret-store.yaml
+  - external-secret.yaml
 
 namespace: prod
 patches:
