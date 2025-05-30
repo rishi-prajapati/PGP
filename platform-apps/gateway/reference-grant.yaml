@@ -1,0 +1,14 @@
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: ReferenceGrant
+metadata:
+  name: allow-nginx-gateway-prod-secrets
+  namespace: prod
+spec:
+  from:
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    namespace: nginx-gateway
+  to:
+  - group: ""
+    kind: Secret
+    name: tls-cert

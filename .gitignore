@@ -1,3 +1,5 @@
 k8s-deploy/backend/base/secret.yaml
 platform-apps/cloudNativePG/secrets.yaml
 platform-apps/External-secret/charts
+terraform/.terraform*
+terraform/terraform*

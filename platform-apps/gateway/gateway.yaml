@@ -1,0 +1,42 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: nginx-gateway
+  namespace: nginx-gateway
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  gatewayClassName: nginx
+  listeners:
+  - protocol: HTTPS
+    port: 443
+    name: https-api
+    hostname: "api.prajapatirishi.site"
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: tls-cert
+        namespace: prod
+    allowedRoutes:
+      namespaces:
+        from: All
+    
+  - protocol: HTTPS
+    port: 443
+    name: https-apiback
+    hostname: "apiback.prajapatirishi.site"
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: tls-cert
+        namespace: prod
+    allowedRoutes:
+      namespaces:
+        from: All
+
+  - name: http-acme
+    port: 80
+    protocol: HTTP
+    allowedRoutes:
+      namespaces:
+        from: All

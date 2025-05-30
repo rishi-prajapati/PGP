@@ -1,0 +1,31 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: frontend-route
+  namespace: prod
+spec:
+  parentRefs:
+  - name: nginx-gateway
+    namespace: nginx-gateway
+  hostnames:
+  - "api.prajapatirishi.site"
+  rules:
+  - backendRefs:
+    - name: frontend-service
+      port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: backend-route
+  namespace: prod
+spec:
+  parentRefs:
+  - name: nginx-gateway
+    namespace: nginx-gateway
+  hostnames:
+  - "apiback.prajapatirishi.site"
+  rules:
+  - backendRefs:
+    - name: backend-service
+      port: 8080
