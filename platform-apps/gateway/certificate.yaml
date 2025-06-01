@@ -11,7 +11,19 @@ spec:
   dnsNames:
     - api.prajapatirishi.site
     - apiback.prajapatirishi.site
-
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argo-tls-cert
+  namespace: argocd
+spec:
+  secretName: argo-tls-cert
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  dnsNames:
+    - argo.prajapatirishi.site
 
 
   

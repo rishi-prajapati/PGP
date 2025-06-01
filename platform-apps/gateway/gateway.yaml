@@ -33,6 +33,19 @@ spec:
     allowedRoutes:
       namespaces:
         from: All
+    
+  - protocol: HTTPS
+    port: 443
+    name: https-argo
+    hostname: "argo.prajapatirishi.site"
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: argo-tls-cert
+        namespace: argocd
+    allowedRoutes:
+      namespaces:
+        from: All
 
   - name: http-acme
     port: 80
