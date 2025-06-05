@@ -3,6 +3,11 @@ kind: Application
 metadata:
   name: backend
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: backend=prajapatirishi99/frontend
+    argocd-image-updater.argoproj.io/backend.force-update: "true"
+    argocd-image-updater.argoproj.io/backend.update-strategy: latest
+    argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/git-secret
 spec:
   destination:
     namespace: prod
