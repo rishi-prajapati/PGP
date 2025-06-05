@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - prajapatirishi99/frontend:3e84dea60c61bc9d3fd515e1e271e02d89198dc8
