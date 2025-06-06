@@ -4,3 +4,4 @@ platform-apps/External-secret/charts
 terraform/.terraform*
 terraform/terraform*
 platform-apps/argocd/git-secret.yaml
+
